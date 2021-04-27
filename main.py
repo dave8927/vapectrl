@@ -2,6 +2,8 @@ import time
 from simple_term_menu import TerminalMenu
 import RPi.GPIO as GPIO
 
+
+
 def vape_power_on():
 	print("Starting vapectrl Power-on Script")
 	time.sleep(1)
