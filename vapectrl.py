@@ -63,7 +63,6 @@ def vape_vape():
 
     GPIO.output(26, False)  # sets GPIO 26 starting state to False
 
-
     delay_time = 5  # requested delay time in seconds
     print("Starting ", delay_time, " second delay:")
     print("Start Mass Flow Control...")
