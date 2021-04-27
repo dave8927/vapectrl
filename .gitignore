@@ -110,6 +110,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Nova.app
+.nova
+
 # Spyder project settings
 .spyderproject
 .spyproject
