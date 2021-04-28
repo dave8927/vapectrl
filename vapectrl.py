@@ -120,7 +120,6 @@ def main():
 
     while not main_menu_exit:
         main_sel = main_menu.show()
-
         if main_sel == 0:
             print("Power on Selected")
             time.sleep(1)
