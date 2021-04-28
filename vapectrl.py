@@ -105,6 +105,19 @@ def main():
         clear_screen=True,
     )
 
+    settings_menu_title = "  Settings Menu\n"
+    settings_menu_items = ["Settings Config", "Save Settings", "Back to Main Menu"]
+    settings_menu_back = False
+
+    settings_menu = TerminalMenu(
+        settings_menu_items,
+        title=settings_menu_title,
+        menu_cursor=main_menu_cursor,
+        menu_cursor_style=main_menu_cursor_style,
+        menu_highlight_style=main_menu_style,
+        cycle_cursor=True,
+        clear_screen=True,
+
     while not main_menu_exit:
         main_sel = main_menu.show()
 
@@ -121,9 +134,21 @@ def main():
             time.sleep(1)
             vape_vape()
         elif main_sel == 3:
+            while not settings_menu_back:
+                settings_sel = settings_menu.show()
+                if settings_sel == 0:
+                    print("Settings Config Selected")
+                    time.sleep(5)
+                elif settings_sel == 1:
+                    print("Save Selected")
+                    time.sleep(5)
+                elif settings_sel == 2:
+                    settings_menu_back = True
+                    print("Back Selected")
+            settings_menu_back = False
+        elif main_sel == 4:
             main_menu_exit = True
             print("Quit Selected")
-
 
 if __name__ == "__main__":
     main()
