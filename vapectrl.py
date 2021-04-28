@@ -1,3 +1,4 @@
+
 import time
 from simple_term_menu import TerminalMenu
 import RPi.GPIO as GPIO
@@ -88,7 +89,7 @@ def vape_vape():
 
 def main():
     main_menu_title = "  Vape Control Menu\n"
-    main_menu_items = ["Power on", "Setup", "Vape", "Quit"]
+    main_menu_items = ["Power on", "Setup", "Vape (4s)", "Quit"]
     main_menu_cursor = "> "
     main_menu_cursor_style = ("fg_red", "bold")
     main_menu_style = ("bg_red", "fg_yellow")
@@ -116,7 +117,7 @@ def main():
             time.sleep(1)
             vape_setup()
         elif main_sel == 2:
-            print("Vape Selected")
+            print("Vape (4s) Selected")
             time.sleep(1)
             vape_vape()
         elif main_sel == 3:
