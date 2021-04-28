@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 import time
 from simple_term_menu import TerminalMenu
 import RPi.GPIO as GPIO
@@ -89,7 +89,7 @@ def vape_vape():
 
 def main():
     main_menu_title = "  Vape Control Menu\n"
-    main_menu_items = ["Power on", "Setup", "Vape (4s)", "Quit"]
+    main_menu_items = ["Power on", "Setup", "Vape (4s)", "Settings...", "Quit"]
     main_menu_cursor = "> "
     main_menu_cursor_style = ("fg_red", "bold")
     main_menu_style = ("bg_red", "fg_yellow")
@@ -106,20 +106,22 @@ def main():
     )
 
     settings_menu_title = "  Settings Menu\n"
-    settings_menu_items = ["Settings Config", "Save Settings", "Back to Main Menu"]
+    settings_menu_items = ["Change Vape Time", "Update Script", "Back to Main Menu"]
     settings_menu_back = False
 
     settings_menu = TerminalMenu(
-        settings_menu_items,
+        menu_entries=settings_menu_items,
         title=settings_menu_title,
         menu_cursor=main_menu_cursor,
         menu_cursor_style=main_menu_cursor_style,
         menu_highlight_style=main_menu_style,
         cycle_cursor=True,
         clear_screen=True,
+    )
 
     while not main_menu_exit:
         main_sel = main_menu.show()
+
         if main_sel == 0:
             print("Power on Selected")
             time.sleep(1)
@@ -136,10 +138,10 @@ def main():
             while not settings_menu_back:
                 settings_sel = settings_menu.show()
                 if settings_sel == 0:
-                    print("Settings Config Selected")
+                    print("Change Vape time...")
                     time.sleep(5)
                 elif settings_sel == 1:
-                    print("Save Selected")
+                    print("Update Script")
                     time.sleep(5)
                 elif settings_sel == 2:
                     settings_menu_back = True
@@ -148,6 +150,7 @@ def main():
         elif main_sel == 4:
             main_menu_exit = True
             print("Quit Selected")
+
 
 if __name__ == "__main__":
     main()
