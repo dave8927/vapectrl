@@ -55,7 +55,7 @@ def vape_vape():
     print("Starting Vape Script /n")
 
     # requested vape time in seconds
-    vape_time = 4
+    vape_time = 1
     print("Vape time = ", vape_time, " seconds")
     time.sleep(1)
 
