@@ -27,7 +27,7 @@ def vape_power_on():
 
 
 def vape_setup():
-    print("Starting vapectrol Setup Script")
+    print("Starting vapectrl Setup Script")
     time.sleep(1)
 
     GPIO.setmode(GPIO.BCM)  # sets GPIO mode to BCM numbering
@@ -52,28 +52,25 @@ def vape_setup():
 
 
 def vape_vape():
-    print("Starting Vape Script /n")
-
-    # requested vape time in seconds
-    vape_time = 1
-    print("Vape time = ", vape_time, " seconds")
-    time.sleep(1)
+    print("Starting Vape Script \n")
+    vape_time = 4  # requested vape time in seconds
+    print("Vape time setting = ", vape_time, " seconds")
+    print("Get ready to start Mass Flow Controller \n")
+    input("Press Enter to start automatic vape countdown...")
 
     GPIO.setmode(GPIO.BCM)  # sets GPIO mode to BCM numbering
     GPIO.setup(26, GPIO.OUT)  # use GPIO pin 26
-
     GPIO.output(26, False)  # sets GPIO 26 starting state to False
 
-    delay_time = 5  # requested delay time in seconds
-    print("Starting ", delay_time, " second delay:")
+    countdown_time = 5  # requested delay time in seconds
+    print("Starting ", countdown_time, " second delay:")
     print("Start Mass Flow Control...")
-    for x in range(delay_time):  # range is no. times the loop will repeat
-        print(x + 1)  # range starts at 0, +1 makes it start at 1
+    for x in range(countdown_time):  # range is no. times the loop will repeat
+        print("vape starting in", 5 - x, "s")
         time.sleep(1)
 
-    print("Starting Vape...")
-
     try:
+        print("Vaping for ", vape_time, " seconds now...")
         for x in range(1):  # sets the number of times to repeat the loop
             GPIO.output(26, True)  # sets GPIO 26 to True, activating the relay
             time.sleep(vape_time)  # time to leave relay on
@@ -81,7 +78,7 @@ def vape_vape():
             GPIO.output(26, False)  # sets GPIO 26 to False, deactivating the relay
             time.sleep(1)  # time leave relay off before before repeating loop
         GPIO.cleanup()  # resets GPIO pins after loop/script is complete
-        print("...Vape complete")
+        print("...Vape complete!")
 
     except KeyboardInterrupt:
         GPIO.cleanup()  # resets GPIO pins on exit (Ctrl-C)
@@ -133,6 +130,7 @@ def main():
         elif main_sel == 2:
             print("Vape (4s) Selected")
             time.sleep(1)
+            input("Press Enter to start vape countdown...")
             vape_vape()
         elif main_sel == 3:
             while not settings_menu_back:
@@ -141,8 +139,12 @@ def main():
                     print("Change Vape time...")
                     time.sleep(5)
                 elif settings_sel == 1:
-                    print("Update Script")
-                    time.sleep(5)
+                    print("Update Script:\n")
+                    print("This has not yet been implimented inside this script...")
+                    print(
+                        "To update, exit this script and run './update.sh' to download the latest version from GitHub\n"
+                    )
+                    input("Press Enter to go back...")
                 elif settings_sel == 2:
                     settings_menu_back = True
                     print("Back Selected")
