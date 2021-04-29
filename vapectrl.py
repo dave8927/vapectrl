@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import time
-import datetime
+from datetime import datetime
 from simple_term_menu import TerminalMenu
 import RPi.GPIO as GPIO
 
