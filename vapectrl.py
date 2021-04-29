@@ -70,7 +70,7 @@ def vape_vape():
         time.sleep(1)
 
     try:
-        print("\nVape started")
+        print("\nVape started...")
         t1 = datetime.utcnow()
         for x in range(1):  # sets the number of times to repeat the loop
             GPIO.output(26, True)  # sets GPIO 26 to True, activating the relay
@@ -82,7 +82,7 @@ def vape_vape():
         t2 = datetime.utcnow()
         t = (t2-t1)*1000  # timedelta in ms
         print("...Vape complete!")
-        print(t.total_seconds(), "ms\n")
+        print("Time = ", t.total_seconds(), "ms\n")
         input("Press Enter to return to Menu...")
 
     except KeyboardInterrupt:
