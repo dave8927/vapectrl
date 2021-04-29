@@ -53,24 +53,24 @@ def vape_setup():
 
 
 def vape_vape():
-    print("Starting Vape Script \n")
+    print("Starting Vape Script: \n")
     vape_time = 4  # requested vape time in seconds
     print("Vape time setting = ", vape_time, " seconds")
     print("Get ready to start Mass Flow Controller \n")
-    input("Press Enter to start automatic vape after 5s countdown...")
+    input("Press Enter to start automatic vape after 5s countdown..")
     print("Start Mass Flow Controller!")
-    
+
     GPIO.setmode(GPIO.BCM)  # sets GPIO mode to BCM numbering
     GPIO.setup(26, GPIO.OUT)  # use GPIO pin 26
     GPIO.output(26, False)  # sets GPIO 26 starting state to False
 
     countdown_time = 5  # requested delay time in seconds
     for x in range(countdown_time):  # range is no. times the loop will repeat
-        print("Vape starting in:", 5 - x, "s...", end="\r")
+        print("\nVape starting in:", 5 - x, "s...", end="\r")
         time.sleep(1)
 
     try:
-        print("\nVaping start...")
+        print("\nVape started")
         t1 = datetime.utcnow()
         for x in range(1):  # sets the number of times to repeat the loop
             GPIO.output(26, True)  # sets GPIO 26 to True, activating the relay
@@ -80,8 +80,10 @@ def vape_vape():
             time.sleep(1)  # time leave relay off before before repeating loop
         GPIO.cleanup()  # resets GPIO pins after loop/script is complete
         t2 = datetime.utcnow()
-        print("...Vape end!")
-        print("Vape was: ", t2-t1, "/n")
+        t = (t2-t1)*1000  # timedelta in ms
+        print(t.total_seconds(), ms)
+        print("...Vape complete!")
+        print("Vape was: ", t2-t1, "\n")
         input("Press Enter to return to Menu...")
 
     except KeyboardInterrupt:
