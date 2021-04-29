@@ -81,7 +81,8 @@ def vape_vape():
         GPIO.cleanup()  # resets GPIO pins after loop/script is complete
         t2 = datetime.utcnow()
         print("...Vape end!")
-        print("Vape was: ", t2-t1)
+        print("Vape was: ", t2-t1, "/n")
+        input("Press Enter to return to Menu...")
 
     except KeyboardInterrupt:
         GPIO.cleanup()  # resets GPIO pins on exit (Ctrl-C)
