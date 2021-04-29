@@ -63,10 +63,11 @@ def vape_vape():
     GPIO.output(26, False)  # sets GPIO 26 starting state to False
 
     countdown_time = 5  # requested delay time in seconds
+    print("Start Mass Flow Controller!")
     print("Starting ", countdown_time, " second delay:")
-    print("Start Mass Flow Control...")
+    
     for x in range(countdown_time):  # range is no. times the loop will repeat
-        print("vape starting in", 5 - x, "s")
+        print("vape starting in", 5 - x, "s...")
         time.sleep(1)
 
     try:
@@ -121,16 +122,15 @@ def main():
 
         if main_sel == 0:
             print("Power on Selected")
-            time.sleep(1)
+            time.sleep(0.3)
             vape_power_on()
         elif main_sel == 1:
             print("Setup Selected")
-            time.sleep(1)
+            time.sleep(0.3)
             vape_setup()
         elif main_sel == 2:
-            print("Vape (4s) Selected")
-            time.sleep(1)
-            input("Press Enter to start vape countdown...")
+            print("Vape Selected")
+            time.sleep(0.3)
             vape_vape()
         elif main_sel == 3:
             while not settings_menu_back:
@@ -140,10 +140,11 @@ def main():
                     time.sleep(5)
                 elif settings_sel == 1:
                     print("Update Script:\n")
-                    print("This has not yet been implimented inside this script...")
-                    print(
-                        "To update, exit this script and run './update.sh' to download the latest version from GitHub\n"
-                    )
+                    print("This has not yet been implimented...")
+                    print((
+                        'To update manually, exit this script and run "./update.sh"' 
+                        'to download the latest version from GitHub\n'
+                    ))
                     input("Press Enter to go back...")
                 elif settings_sel == 2:
                     settings_menu_back = True
