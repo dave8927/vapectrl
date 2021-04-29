@@ -66,7 +66,7 @@ def vape_vape():
 
     countdown_time = 5  # requested delay time in seconds
     for x in range(countdown_time):  # range is no. times the loop will repeat
-        print("\nVape starting in:", 5 - x, "s...", end="\r")
+        print("\nVape starting in:", 5 - x, "s...", end="")
         time.sleep(1)
 
     try:
@@ -81,7 +81,7 @@ def vape_vape():
         GPIO.cleanup()  # resets GPIO pins after loop/script is complete
         t2 = datetime.utcnow()
         t = (t2-t1)*1000  # timedelta in ms
-        print(t.total_seconds(), ms)
+        print(t.total_seconds(), "ms")
         print("...Vape complete!")
         print("Vape was: ", t2-t1, "\n")
         input("Press Enter to return to Menu...")
