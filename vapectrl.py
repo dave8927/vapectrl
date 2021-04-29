@@ -67,11 +67,11 @@ def vape_vape():
     print("Starting ", countdown_time, " second delay:")
     
     for x in range(countdown_time):  # range is no. times the loop will repeat
-        print("vape starting in", 5 - x, "s...")
+        print("vape starting in", 5 - x, "s...",end="\r")
         time.sleep(1)
 
     try:
-        print("Vaping for ", vape_time, " seconds now...")
+        print("\nVaping for ", vape_time, " seconds now...")
         for x in range(1):  # sets the number of times to repeat the loop
             GPIO.output(26, True)  # sets GPIO 26 to True, activating the relay
             time.sleep(vape_time)  # time to leave relay on
@@ -87,7 +87,7 @@ def vape_vape():
 
 def main():
     main_menu_title = "  Vape Control Menu\n"
-    main_menu_items = ["Power on", "Setup", "Vape (4s)", "Settings...", "Quit"]
+    main_menu_items = ["Power on", "Setup", "Vape", "Settings...", "Quit"]
     main_menu_cursor = "> "
     main_menu_cursor_style = ("fg_red", "bold")
     main_menu_style = ("bg_red", "fg_yellow")
