@@ -66,7 +66,7 @@ def vape_vape():
 
     countdown_time = 5  # requested delay time in seconds
     for x in range(countdown_time):  # range is no. times the loop will repeat
-        print("Vape starting in:", 5 - x, "s...", end="")
+        print("Vape starting in:", 5 - x, "s...\r", end="")
         time.sleep(1)
 
     try:
