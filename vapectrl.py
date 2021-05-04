@@ -91,9 +91,28 @@ def vape_vape():
         GPIO.cleanup()  # resets GPIO pins on exit (Ctrl-C)
 
 
+def config_vape_time():
+    print("Config Script:\n")
+    print("This has not yet been implimented...")
+    print((
+        '......\n'
+    ))
+    input("Press Enter to go back...")
+
+
+def config_update():
+    print("Update Script:\n")
+    print("This has not yet been implimented...")
+    print((
+        'To update manually, exit this script and run "./update.sh"'
+        'to download the latest version from GitHub\n'
+    ))
+    input("Press Enter to go back...")
+
+
 def main():
     main_menu_title = "  Vape Control Menu\n"
-    main_menu_items = ["Power on", "Setup", "Vape", "Settings...", "Quit"]
+    main_menu_items = ["Power on", "Setup", "Vape", "Config...", "Quit"]
     main_menu_cursor = "> "
     main_menu_cursor_style = ("fg_red", "bold")
     main_menu_style = ("bg_red", "fg_yellow")
@@ -109,13 +128,13 @@ def main():
         clear_screen=True,
     )
 
-    settings_menu_title = "  Settings Menu\n"
-    settings_menu_items = ["Change Vape Time", "Update Script", "Back to Main Menu"]
-    settings_menu_back = False
+    config_menu_title = "  Config Menu\n"
+    config_menu_items = ["Change Vape Time", "Update Script", "Back to Main Menu"]
+    config_menu_back = False
 
-    settings_menu = TerminalMenu(
-        menu_entries=settings_menu_items,
-        title=settings_menu_title,
+    config_menu = TerminalMenu(
+        menu_entries=config_menu_items,
+        title=config_menu_title,
         menu_cursor=main_menu_cursor,
         menu_cursor_style=main_menu_cursor_style,
         menu_highlight_style=main_menu_style,
@@ -139,23 +158,20 @@ def main():
             time.sleep(0.3)
             vape_vape()
         elif main_sel == 3:
-            while not settings_menu_back:
-                settings_sel = settings_menu.show()
-                if settings_sel == 0:
-                    print("Change Vape time...")
-                    time.sleep(5)
-                elif settings_sel == 1:
-                    print("Update Script:\n")
-                    print("This has not yet been implimented...")
-                    print((
-                        'To update manually, exit this script and run "./update.sh"'
-                        'to download the latest version from GitHub\n'
-                    ))
-                    input("Press Enter to go back...")
-                elif settings_sel == 2:
-                    settings_menu_back = True
-                    print("Back Selected")
-            settings_menu_back = False
+            while not config_menu_back:
+                config_sel = config_menu.show()
+                if config_sel == 0:
+                    print("Config: Vape Time Selected")
+                    time.sleep(0.3)
+                    config_vape_time()
+                elif config_sel == 1:
+                    print("Config: Update Selected")
+                    time.sleep(0.3)
+                    config_update()
+                elif config_sel == 2:
+                    config_menu_back = True
+                    print("Config: Back Selected")
+            config_menu_back = False
         elif main_sel == 4:
             main_menu_exit = True
             print("Quit Selected")
